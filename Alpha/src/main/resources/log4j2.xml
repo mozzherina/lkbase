@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ABSOLUTE} %5p %t %c{1}:%M:%L - %m%n"/>
+            <!--%d{yyyy-MM-dd HH:mm:ss}-->
+        </Console>
+        <File name="File" fileName="alpha.log">
+            <PatternLayout pattern="%d{ABSOLUTE} %5p %t %c{1}:%M:%L - %m%n"/>
+        </File>
+        <File name="DebugFile" fileName="alpha-debug.log">
+            <PatternLayout pattern="%d{ABSOLUTE} %5p %t %c{1}:%M:%L - %m%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <!--<AppenderRef ref="File" level="error"/>-->
+        </Root>
+        <Logger name="com.rocket.alpha.lkbase.WordNet" level="debug">
+            <AppenderRef ref="DebugFile"/> <!--  level="DEBUG" additivity="false"-->
+        </Logger>
+        <Logger name="com.rocket.alpha.communication.PostgreSQL" level="debug">
+            <AppenderRef ref="DebugFile"/>
+        </Logger>
+        <Logger name="com.rocket.alpha.communication.Arango" level="debug">
+            <AppenderRef ref="DebugFile"/>
+        </Logger>
+    </Loggers>
+</Configuration> 
